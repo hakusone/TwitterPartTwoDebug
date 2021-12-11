@@ -74,6 +74,7 @@ public class TimelineActivity extends AppCompatActivity {
             @Override
             public void onSuccess(int statusCode, Headers headers, JSON json) {
                 JSONArray jsonArray = json.jsonArray;
+                adaptor.clear();
                 tweets.addAll(Tweet.fromJson(jsonArray));
                 adaptor.notifyDataSetChanged();
             }
@@ -97,6 +98,7 @@ public class TimelineActivity extends AppCompatActivity {
                 adaptor.clear();
                 tweets.addAll(Tweet.fromJson(jsonArray));
                 adaptor.notifyDataSetChanged();
+                swipeRefreshLayout.setRefreshing(false);
             }
 
             @Override
